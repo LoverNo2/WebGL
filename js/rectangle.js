@@ -1,18 +1,11 @@
 import * as webglUtils from '../node_modules/webgl-utils.js/es/index.js'
 
 function main() {
-  // Get A WebGL context
-  /** @type {HTMLCanvasElement} */
-  var canvas = document.querySelector('#webglCanvas')
-  var gl = canvas.getContext('webgl')
-  if (!gl) {
-    return
-  }
+  var gl = document.querySelector('#webglCanvas').getContext('webgl')
 
-  // setup GLSL program
   var program = webglUtils.createProgramFromScripts(gl, ['vertex-shader-2d', 'fragment-shader-2d'])
+  gl.useProgram(program)
 
-  // look up where the vertex data needs to go.
   var positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
 
   // look up uniform locations

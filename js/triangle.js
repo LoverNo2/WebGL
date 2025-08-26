@@ -1,17 +1,19 @@
 import * as webglUtils from '../node_modules/webgl-utils.js/es/index.js'
 
 function main() {
-  var canvas = document.querySelector('#webglCanvas')
-  var gl = canvas.getContext('webgl')
+  var gl = document.querySelector('#webglCanvas').getContext('webgl')
 
   var program = webglUtils.createProgramFromScripts(gl, ['vertex-shader-2d', 'fragment-shader-2d'])
   gl.useProgram(program)
+
   var positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
   // 取得逻辑通道编号index
   var resolutionUniformLocation = gl.getUniformLocation(program, 'u_resolution')
+  gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
+
   var positionBuffer = gl.createBuffer()
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-  var positions = [10, 20, 80, 20, 10, 30, 10, 30, 80, 20, 80, 30]
+  var positions = [10, 20, 980, 20, 10, 680, 10, 690, 980, 30, 980, 690]
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
 
   webglUtils.resizeCanvasToDisplaySize(gl.canvas)
@@ -54,7 +56,7 @@ function main() {
   // - 2.数据布局定义​​：通过参数指定如何从缓冲区中提取数据
   // - 3.​属性状态更新​​：方法执行后，WebGL 内部会更新顶点属性对象（Vertex Array Object, VAO）的状态，记录参数信息
   // - 4.启用属性数组​​：需额外调用 gl.enableVertexAttribArray(index)激活该属性，否则 WebGL 会使用默认属性值（如 vec4(0.0, 0.0, 0.0, 1.0)）而非缓冲区数据
-  gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
+
   var primitiveType = gl.TRIANGLES
   var offset = 0
   var count = 6
