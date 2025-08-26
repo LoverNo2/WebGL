@@ -1,12 +1,14 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
   font-family: JetBrains Mono, '.PingFang SC Thin';
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   width: 100%;
   height: 100%;
@@ -16,7 +18,8 @@ body {
   font-size: 100px;
 }
 #webglCanvas {
-  border: 1px solid #000;
+  border: 1px solid #00c9bf;
+  padding: 10px;
   width: 80%;
   height: 80%;
 }
