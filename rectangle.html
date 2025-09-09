@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebGL 基础</title>
+    <title>rectangle</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
@@ -24,21 +24,14 @@
     }
   </script>
 
-  <!-- <script id="fragment-shader-2d" type="notjs">
-    precision highp float;
-    void main() {
-      gl_FragColor = vec4(1, 0, 0.5, 1);
-    }
-  </script> -->
   <script id="fragment-shader-2d" type="notjs">
     precision highp float;
-
     uniform vec4 u_color;
 
     void main() {
       gl_FragColor = u_color;
     }
   </script>
-  <!-- <script type="module" src="./js/triangle.js"></script> -->
+
   <script type="module" src="./js/rectangle.js"></script>
 </html>
